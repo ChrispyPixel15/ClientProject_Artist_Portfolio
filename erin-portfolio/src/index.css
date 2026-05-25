@@ -1,0 +1,52 @@
+:root {
+  --text-color-main: #4f0300;
+  --text-color-dark: #4D4D4D;
+  --text-color-light: #ffffff;
+  --background-color: hsl(0, 0%, 100%);
+  --border-color: #4f0300;
+  --nav-color-light: #8d231c;
+  --nav-color-dark: #4f0300;
+
+  font-family: 'BalooPaaji2';
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Amarante';
+  src: url('./static/fonts/Amarante-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'BalooPaaji2';
+  src: url('./static/fonts/BalooPaaji2-VariableFont_wght.ttf');
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('./images/website/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+  z-index: -1; 
+  transform: scale(1.1);
+  margin: 0;
+}
+
+@media screen and (max-width: 1060px) {
+  body::before {
+    background-size: auto;
+  }
+}
