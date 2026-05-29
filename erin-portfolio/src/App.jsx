@@ -6,6 +6,7 @@ import Illustration from "./pages/illustration";
 import GameAssets from "./pages/gameassets";
 import Animation from "./pages/animation";
 import { XIcon } from "@phosphor-icons/react";
+import MobileNavigationButton from "./components/mobileNavigationButton";
 
 function App() {
   const [pageNumber, setPageNumber] = useState(0);
@@ -31,6 +32,12 @@ function App() {
           <div className={`burger-menu-x ${burgerMenu ? "menu-open" : "menu-closed"}`}>
             <XIcon size={35} color="#ffffff"/>
           </div>
+        </div>
+        <div className={`mobile-menu ${burgerMenu ? "menu-open" : "menu-closed"}`}>
+          <MobileNavigationButton name={"Home"} navigate={() => navigateToPage(0)} number={"zero"} active={pageNumber === 0 ? "active" : ""} />
+          <MobileNavigationButton name={"Illustration"} navigate={() => navigateToPage(1)} number={"one"} active={pageNumber === 1 ? "active" : ""} />
+          <MobileNavigationButton name={"Animation"} navigate={() => navigateToPage(2)} number={"two"} active={pageNumber === 2 ? "active" : ""} />
+          <MobileNavigationButton name={"Game Assets"} navigate={() => navigateToPage(3)} number={"three"} active={pageNumber === 3 ? "active" : ""} />
         </div>
       </nav>
       <section>

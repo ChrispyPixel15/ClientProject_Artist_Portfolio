@@ -4,19 +4,15 @@ import { animationData } from "../data/animationData.jsx";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 
 function Animation() {
-    const [rowCount, setRowCount] = useState(0);
+    const videoRef = useRef(null);
+    const [newData, setNewData] = useState([]);
     const [viewIllus, setViewIllus] = useState(false);
     const [imageId, setImageId] = useState(0);
-    const videoRef = useRef(null);
 
     useEffect(() => {
-        if (animationData.length % 2 !== 0) {
-            const num = (animationData.length / 2) - 0.5;
-            setRowCount(num + 1);
-        }
-        else {
-            setRowCount(animationData.length / 2);
-        }
+        const data = animationData.toReversed();
+        setNewData(data);
+        console.log(data);
     }, [])
 
     const mouseEnter = () => {
@@ -35,8 +31,8 @@ function Animation() {
             <div className="line-two"></div>
             <section className="illustrations">
                 {
-                    animationData.map((illus) => {
-                        const rowNum = illus.id % 2 !== 0 ? (illus.id / 2 - 0.5) + 1 : illus.id / 2 ;
+                    newData.map((illus, index) => {
+                        const rowNum = (index + 1) % 2 !== 0 ? ((index + 1) / 2 - 0.5) + 1 : (index + 1) / 2 ;
 
                         return (
                             <div key={illus.id} className="image-container" >
@@ -70,11 +66,11 @@ function Animation() {
                             <XIcon size={30} className="close-icon"/>
                         </div>                        
                         {
-                            animationData.filter((illus) => illus.id === imageId).map((ill) => (
+                            newData.filter((illus) => illus.id === imageId).map((ill) => (
                                 <div key={ill.id} className="illustration-data">
                                     <div className="arrow-images" onClick={() =>{
                                         setImageId(
-                                            imageId === 1 ? animationData.length : imageId - 1
+                                            imageId === newData.length ? 1 : imageId + 1
                                         );
                                     }}>
                                         <CaretLeftIcon size={50} color="#ffffff" />
@@ -89,8 +85,8 @@ function Animation() {
                                         <p className="image-description">{ill.description}</p>
                                     </div>
                                     <div className="arrow-images" onClick={() => {
-                                        setImageId(
-                                            imageId === animationData.length ? 1 : imageId + 1
+                                        setImageId(                                            
+                                            imageId === 1 ? newData.length : imageId - 1
                                         );
                                     }}>
                                         <CaretRightIcon size={50} color="#ffffff" />

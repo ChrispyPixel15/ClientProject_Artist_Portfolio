@@ -4,18 +4,14 @@ import { illustrationData } from "../data/illustrationData";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 
 function Illustration() {
-    const [rowCount, setRowCount] = useState(0);
+    const [newData, setNewData] = useState([]);
     const [viewIllus, setViewIllus] = useState(false);
     const [imageId, setImageId] = useState(0);
 
     useEffect(() => {
-        if (illustrationData.length % 2 !== 0) {
-            const num = (illustrationData.length / 2) - 0.5;
-            setRowCount(num + 1);
-        }
-        else {
-            setRowCount(illustrationData.length / 2);
-        }
+        const data = illustrationData.toReversed();
+        setNewData(data);
+        console.log(data);
     }, [])
 
     return (
@@ -25,21 +21,25 @@ function Illustration() {
             <div className="line-two"></div>
             <section className="illustrations">
                 {
-                    illustrationData.map((illus) => {
-                        const rowNum = illus.id % 2 !== 0 ? (illus.id / 2 - 0.5) + 1 : illus.id / 2 ;
+                    newData.map((illus, index) => {
+                        const rowNum = (index + 1) % 2 !== 0 ? ((index + 1) / 2 - 0.5) + 1 : (index + 1) / 2 ;
 
                         return (
-                            <div key={illus.id} className="image-container">
-                                <img 
-                                    src={illus.img} 
-                                    className={`${rowNum % 2 !== 0 ? "rowOdd" : "rowEven"} ${illus.id % 2 !== 0 ? "imageOdd" : "imageEven"}`} 
-                                    onClick={() => {
+                            <div key={illus.id} className="image-container"
+                                        onClick={() => {
                                         setViewIllus(true);
                                         setImageId(illus.id);
                                         document.body.scroll = "no";
                                         document.documentElement.style.overflow = 'hidden';
-                                    }}
-                                />
+                                    }}>
+                                <div className="overlay-info">
+                                    <p className="title">{illus.name}</p>
+                                    <p className="desc">{illus.description}</p>
+                                </div>
+                                <img 
+                                    src={illus.img} 
+                                    className={`${rowNum % 2 !== 0 ? "rowOdd" : "rowEven"} ${illus.id % 2 !== 0 ? "imageOdd" : "imageEven"}`} 
+                                />                                
                             </div>
                         )                      
                     })
@@ -56,11 +56,11 @@ function Illustration() {
                             <XIcon size={30} className="close-icon"/>
                         </div>                        
                         {
-                            illustrationData.filter((illus) => illus.id === imageId).map((ill) => (
+                            newData.filter((illus) => illus.id === imageId).map((ill) => (
                                 <div key={ill.id} className="illustration-data">
                                     <div className="arrow-images" onClick={() =>{
                                         setImageId(
-                                            imageId === 1 ? illustrationData.length : imageId - 1
+                                            imageId === newData.length ? 1 : imageId + 1
                                         );
                                     }}>
                                         <CaretLeftIcon size={50} color="#ffffff" />
@@ -74,7 +74,7 @@ function Illustration() {
                                     </div>
                                     <div className="arrow-images" onClick={() => {
                                         setImageId(
-                                            imageId === illustrationData.length ? 1 : imageId + 1
+                                            imageId === 1 ? newData.length : imageId - 1
                                         );
                                     }}>
                                         <CaretRightIcon size={50} color="#ffffff" />
