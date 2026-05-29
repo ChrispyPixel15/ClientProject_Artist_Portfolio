@@ -29,7 +29,7 @@ function Home() {
                 </article>
                 <article className="about-image">
                     <div className="circle-bg"></div>
-                    <img src="../src/images/website/erinImage.png" className="erin-image" />
+                    <img src="../images/website/erinImage.png" className="erin-image" />
                 </article>
             </section>
         </div>
