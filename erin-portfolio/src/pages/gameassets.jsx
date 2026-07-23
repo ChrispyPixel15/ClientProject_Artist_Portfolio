@@ -39,7 +39,7 @@ function GameAssets() {
                                 <img 
                                     src={illus.img} 
                                     className={`${rowNum % 2 !== 0 ? "rowOdd" : "rowEven"} ${illus.id % 2 !== 0 ? "imageOdd" : "imageEven"}`} 
-                                    
+                                    loading="lazy"
                                 />
                             </div>
                         )                      

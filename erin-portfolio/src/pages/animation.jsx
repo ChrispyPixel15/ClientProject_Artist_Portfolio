@@ -48,7 +48,7 @@ function Animation() {
                                     document.body.scroll = "no";
                                     document.documentElement.style.overflow = 'hidden';
                                 }}>
-                                    <source src={illus.img} type="video/mp4" />
+                                    <source src={illus.img} type="video/webm" />
                                 </video>
                             </div>
                         )                      
