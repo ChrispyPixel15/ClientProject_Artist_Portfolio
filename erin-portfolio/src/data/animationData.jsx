@@ -1,7 +1,7 @@
 export const animationData = [
     {
         id: 1,
-        img: "../images/animations/Big T.webm",
+        img: "../images/animations/Big_T.webm",
         name: "Big T",
         description: "A completely nondescript and generic boy has a strangely blue sword and two totally random music records.",
         loop: true
