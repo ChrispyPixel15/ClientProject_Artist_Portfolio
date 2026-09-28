@@ -9,7 +9,7 @@
 <!-- - [Acknowledgements](#acknowledgements) -->
 
 ## Overview
-![Live Project](https://eversephy.netlify.app/)
+[Live Project](https://eversephy.netlify.app/)
 <div class="container">
  <img src="MDImages/homee.png" alt="Home Page" width="400">
  <img src="MDImages/illuse.png" alt="Illustration Page" width="400">
