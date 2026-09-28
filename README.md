@@ -10,7 +10,8 @@
 
 ## Overview
 
-<img src="MDImages/homee.png" alt="Home Page" width="300">
+<img src="MDImages/homee.png" alt="Home Page" width="400">
+<img src="MDImages/illuse.png" alt="Illustration Page" width="400">
 
 This is a project for a client. The client commissioned me to build them a portfolio web app. This project allows the client to showcase their artistic work to possible clients. It shows their illustrations, as well as plays their animations. 
  
